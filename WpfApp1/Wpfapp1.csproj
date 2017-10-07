@@ -35,6 +35,31 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxInterop.WMPLib">
+      <HintPath>..\..\..\..\..\Desktop\Apis\AxInterop.WMPLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis">
+      <HintPath>..\..\..\..\..\Desktop\Apis\Google.Apis.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth">
+      <HintPath>..\..\..\..\..\Desktop\Apis\Google.Apis.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth.PlatformServices">
+      <HintPath>..\..\..\..\..\Desktop\Apis\Google.Apis.Auth.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Core">
+      <HintPath>..\..\..\..\..\Desktop\Apis\Google.Apis.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.PlatformServices">
+      <HintPath>..\..\..\..\..\Desktop\Apis\Google.Apis.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.YouTube.v3">
+      <HintPath>..\..\..\..\..\Desktop\Apis\Google.Apis.YouTube.v3.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.WMPLib">
+      <HintPath>..\..\..\..\..\Desktop\Apis\새 폴더\Interop.WMPLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="SharpDX">
       <HintPath>Libs\SharpDX.dll</HintPath>
     </Reference>
@@ -69,6 +94,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Zlib.Portable">
+      <HintPath>..\..\..\..\..\Desktop\Apis\새 폴더\Zlib.Portable.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -82,7 +110,12 @@
     <Compile Include="Controls\Morphing\MorphingManager.cs" />
     <Compile Include="Controls\Morphing\PtrChain.cs" />
     <Compile Include="Controls\Morphing\PtrPoint.cs" />
-    <Compile Include="MainWindow.cs" />
+    <Compile Include="GIFForm.xaml.cs">
+      <DependentUpon>GIFForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MorphForm.xaml.cs">
+      <DependentUpon>MorphForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Morphing\Bit2D.cs" />
     <Compile Include="Morphing\BitmapEx.cs" />
     <Compile Include="Morphing\CharacterFactory.cs" />
@@ -103,6 +136,9 @@
     <Compile Include="St2D\Renderer.cs" />
     <Compile Include="St2D\Utils\BitmapHelper.cs" />
     <Compile Include="St2D\Utils\ColorConverter.cs" />
+    <Compile Include="VideoForm.xaml.cs">
+      <DependentUpon>VideoForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Winapi.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -113,9 +149,11 @@
     <Compile Include="MainForm.xaml.cs">
       <DependentUpon>MainForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="YoutubeForm.xaml.cs">
+      <DependentUpon>YoutubeForm.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -142,7 +180,23 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="GIFForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MorphForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VideoForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="YoutubeForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
