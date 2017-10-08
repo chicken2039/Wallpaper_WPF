@@ -11,6 +11,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
+using Microsoft.Win32;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Threading;
+using System.Windows.Forms;
+
 
 namespace WpfApp1
 {
@@ -25,10 +33,12 @@ namespace WpfApp1
             OwnerScreenIndex = ownerScreenIndex;
             PinToBackground();
         }
+        #region Variable
         private string m_videopath = "";
         public string Videopath { get { return m_videopath; } set { m_videopath = value; } }
         //################################################//
         private bool m_isFixed = false;
+        DispatcherTimer timer = new DispatcherTimer();
         public bool IsFixed
         { get { return m_isFixed; } }
         //################################################//
@@ -46,13 +56,13 @@ namespace WpfApp1
             }
         }
 
-        public WinApi.MONITORINFO OwnerScreen
+        public Winapi.MONITORINFO OwnerScreen
         {
             get
             {
                 if (OwnerScreenIndex < ScreenUtility.Screens.Length)
                     return ScreenUtility.Screens[OwnerScreenIndex];
-                return new WinApi.MONITORINFO()
+                return new Winapi.MONITORINFO()
                 {
                     rcMonitor = Screen.PrimaryScreen.Bounds,
                     rcWork = Screen.PrimaryScreen.WorkingArea,
@@ -85,7 +95,7 @@ namespace WpfApp1
         //################################################//
         private readonly object m_lockFlag = new object();
         private bool m_needUpdate = false;
-#endregion
+        #endregion
         #region Pin_Background
         protected bool PinToBackground()
         {
@@ -108,8 +118,8 @@ namespace WpfApp1
             while (m_onRunning)
             {
                 bool isChildOfProgman = false;
-                var progman = WinApi.FindWindow("Progman", null);
-                WinApi.EnumChildWindows(progman, new WinApi.EnumWindowsProc((handle, lparam) =>
+                var progman = Winapi.FindWindow("Progman", null);
+                Winapi.EnumChildWindows(progman, new Winapi.EnumWindowsProc((handle, lparam) =>
                 {
                     if (handle == me)
                     {
@@ -150,7 +160,7 @@ namespace WpfApp1
                 m_checkParent = Task.Factory.StartNew(CheckParent, Handle);
 
 
-                timer_check.Start();
+                timer.Start();
             }
             else
             {
@@ -179,7 +189,7 @@ namespace WpfApp1
             SystemEvents.DisplaySettingsChanged -= SystemEvents_DisplaySettingsChanged;
 
 
-            timer_check.Stop();
+            timer.Stop();
 
 
             if (m_checkParent != null)

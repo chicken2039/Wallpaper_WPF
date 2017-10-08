@@ -39,8 +39,8 @@ namespace WpfApp1
         private bool m_isFixed = false;
         public bool IsFixed
         { get { return m_isFixed; } }
-        static IntPtr mainWindowPtr = new WindowInteropHelper(this).Handle;//static 붙여야 한다 해서 붙임ㅎ
-        HwndSource mainWindowSrc = HwndSource.FromHwnd(mainWindowPtr);
+        IntPtr mainWindowPtr = new WindowInteropHelper(this).Handle;//핸들을 얻으려고
+        HwndSource mainWindowSrc = HwndSource.FromHwnd(mainWindowPtr);//쓰여진 코드
         //################################################//
         private int m_latestVolume = 100;
         public int Volume
