@@ -18,6 +18,7 @@ using System.Data;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Microsoft.Win32;
 
 namespace WpfApp1
 {
@@ -139,7 +140,15 @@ namespace WpfApp1
 
         private void btnOpenVideo_Click(object sender, RoutedEventArgs e)
         {
+            Microsoft.Win32.OpenFileDialog openFileDialog1 = new Microsoft.Win32.OpenFileDialog();
+            openFileDialog1.Filter = VideoExt;
+            openFileDialog1.Title = "Video";
+            if (openFileDialog1.ShowDialog() == DialogResult)
+            {
+                lblVideoPath.Content = openFileDialog1.FileName;
+                VideoPath = openFileDialog1.FileName;
 
+            }
         }
 
         private void btnOpenGIF_Click(object sender, RoutedEventArgs e)
@@ -147,7 +156,7 @@ namespace WpfApp1
             Microsoft.Win32.OpenFileDialog openFileDialog1 = new Microsoft.Win32.OpenFileDialog();
             openFileDialog1.Filter = "*.gif|*.gif";
             openFileDialog1.Title = "GIF Open";
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (openFileDialog1.ShowDialog()==true)
             {
                 GIFPath = openFileDialog1.FileName;
                 lblGIFPath.Content = GIFPath;
@@ -175,10 +184,11 @@ namespace WpfApp1
             Microsoft.Win32.OpenFileDialog openFileDialog1 = new Microsoft.Win32.OpenFileDialog();
             openFileDialog1.Title = "Open Image";
             openFileDialog1.Filter = ImageExt;
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (openFileDialog1.ShowDialog() == true)
             {
                 Setting.MorphID = openFileDialog1.FileName;
-                pictureBox1.ImageLocation = Setting.MorphID;
+                ImageSource imageSource = new BitmapImage(new Uri(Setting.MorphID));
+                Thumb_Image.Source = imageSource;
             }
         }
 

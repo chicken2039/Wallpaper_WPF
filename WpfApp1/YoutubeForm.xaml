@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="YoutubeForm" Height="300" Width="300">
     <Grid>
-        
+        <WebBrowser Name="webBrowser1" HorizontalAlignment="Left" Height="269" VerticalAlignment="Top" Width="292"/>
+
     </Grid>
 </Window>

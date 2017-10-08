@@ -46,6 +46,7 @@
                 <Label Name="label5" Height="21" Width="89" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="9" Margin="122,48,541,299" HorizontalAlignment="Right" VerticalAlignment="Bottom" >Second Ment</Label>
                 <Label Name="label4" Height="21" Width="70" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="8" Margin="122,5,560,342" HorizontalAlignment="Right" VerticalAlignment="Bottom" >First Ment</Label>
                 <Button Name="btnText" Height="30" Width="274" TabIndex="7" Click="btnText_Click" Margin="-4,91,482,247" HorizontalAlignment="Right" VerticalAlignment="Bottom" >Start</Button>
+                <Image Name="Thumb_Image" Height="61" Canvas.Top="5" Width="106"/>
             </Canvas>
         </GroupBox>
         <GroupBox Margin="273,95,184,170" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
